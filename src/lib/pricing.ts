@@ -2,29 +2,29 @@
 // All prices are ILLUSTRATIVE (USD) so the demo can teach how print pricing works.
 import type { Design, Garment } from "./types";
 
-export const GARMENT_PRICE: Record<Garment, number> = { tee: 15, polo: 28, hoodie: 55 };
+export const GARMENT_PRICE: Record<Garment, number> = { tee: 5, polo: 12, hoodie: 18 };
 export const GARMENT_LABEL: Record<Garment, string> = { tee: "T-shirt", polo: "Polo", hoodie: "Hoodie" };
 
 // Screen printing: a one-off screen per ink colour, then a per-shirt cost per colour.
-export const SCREEN_SETUP_PER_COLOUR = 40;
+export const SCREEN_SETUP_PER_COLOUR = 25;
 export const SCREEN_MIN_QTY = 12;
 // Quantity breaks: [minimum quantity, price per colour per shirt]
 export const SCREEN_BREAKS: [number, number][] = [
-  [12, 3.0],
-  [24, 2.2],
-  [48, 1.6],
-  [72, 1.2],
+  [12, 1.0],
+  [24, 0.75],
+  [48, 0.55],
+  [72, 0.4],
 ];
 
 // Digital (DTG) printing: no setup, any number of colours, higher price per shirt.
 export const DTG_BREAKS: [number, number][] = [
-  [1, 18],
-  [12, 15],
-  [24, 12],
+  [1, 8],
+  [12, 6.5],
+  [24, 5],
 ];
 
 // Personalised names and numbers on the back (each shirt is different), per shirt.
-export const NAMES_PER_SHIRT = 8;
+export const NAMES_PER_SHIRT = 4;
 
 export type Method = "screen" | "dtg";
 

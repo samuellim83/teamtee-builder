@@ -12,9 +12,9 @@ const base: Design = {
 
 describe("breakPrice", () => {
   it("uses the highest break reached", () => {
-    expect(breakPrice(SCREEN_BREAKS, 12)).toBe(3.0);
-    expect(breakPrice(SCREEN_BREAKS, 30)).toBe(2.2);
-    expect(breakPrice(SCREEN_BREAKS, 100)).toBe(1.2);
+    expect(breakPrice(SCREEN_BREAKS, 12)).toBe(1.0);
+    expect(breakPrice(SCREEN_BREAKS, 30)).toBe(0.75);
+    expect(breakPrice(SCREEN_BREAKS, 100)).toBe(0.4);
   });
 });
 
@@ -30,14 +30,14 @@ describe("bestMethod", () => {
 describe("quote", () => {
   it("adds garment, setup and print costs correctly", () => {
     const q = quote(base, 24);
-    // front: 2 colours screen = setup 80, 2 x 2.20 = 4.40 per shirt; tee 15
-    expect(q.locations[0]).toMatchObject({ method: "screen", setup: 80, perShirt: 4.4 });
-    expect(q.total).toBeCloseTo(80 + (15 + 4.4) * 24, 2);
+    // front: 2 colours screen = setup 50, 2 x 0.75 = 1.50 per shirt; tee 5
+    expect(q.locations[0]).toMatchObject({ method: "screen", setup: 50, perShirt: 1.5 });
+    expect(q.total).toBeCloseTo(50 + (5 + 1.5) * 24, 2);
     expect(q.eachAllIn).toBeCloseTo(q.total / 24, 2);
   });
   it("charges names per shirt", () => {
     const q = quote({ ...base, backStyle: "names" }, 24);
-    expect(q.namesEach).toBe(8);
+    expect(q.namesEach).toBe(4);
   });
   it("is zero for zero shirts", () => {
     expect(quote(base, 0).total).toBe(0);
@@ -45,7 +45,7 @@ describe("quote", () => {
   it("prices a blank shirt as garment only", () => {
     const q = quote({ ...base, graphic: "none", teamName: "" }, 12);
     expect(q.locations).toHaveLength(0);
-    expect(q.total).toBe(15 * 12);
+    expect(q.total).toBe(5 * 12);
   });
 });
 
