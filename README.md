@@ -1,10 +1,10 @@
-https://teamtee-builder.samuellim83.workers.dev/ # TeamTee Builder
+# TeamTee Builder 1.0
 
 **Design a team T-shirt by snapping blocks together.** A live mockup updates as you build, the price explains itself as you go, and a small AI model suggests slogans.
 
 Built by **Samuel Lim Wei Howe** as a portfolio project for apparel-printing software.
 
-> Live demo: _add your Cloudflare URL here after deploying_
+> Live demo: https://teamtee-builder.samuellim83.workers.dev
 
 ![TeamTee Builder: the block stack, live mockup and price](docs/screenshot-shirt.png)
 ![Names and numbers on the back, with computed savings](docs/screenshot-back-and-price.png)
